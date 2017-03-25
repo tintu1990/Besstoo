@@ -1,0 +1,143 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.rplanx.besstoo.Login">
+    <android.support.design.widget.CoordinatorLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:id="@+id/coordinatorLayout">
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:id="@+id/l1"
+        >
+
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/nav_layout"
+            android:background="@drawable/nav_bck"
+            >
+
+            <RelativeLayout
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                android:id="@+id/back_layout"
+                android:layout_centerVertical="true"
+                >
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
+                    android:layout_alignParentLeft="true"
+                    android:src="@drawable/bck"
+                    android:id="@+id/back"
+                    android:layout_marginRight="5dp"
+                    android:layout_marginLeft="10dp"
+                    />
+            </RelativeLayout>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_toRightOf="@+id/back_layout"
+                android:text="LOGIN/SIGNUP"
+                android:layout_centerVertical="true"
+                android:textSize="15sp"
+                android:textColor="#ea9c0c"
+                android:layout_marginLeft="10dp"
+                />
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/navs"
+                android:id="@+id/nav"
+                android:layout_alignParentRight="true"
+                android:layout_marginRight="10dp"
+                android:layout_marginLeft="10dp"
+                android:layout_centerVertical="true"
+                />
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_toLeftOf="@+id/nav"
+                android:src="@drawable/noti"
+                android:id="@+id/noti"
+                android:visibility="gone"
+                android:layout_centerVertical="true"
+                />
+            <TextView
+                android:id="@+id/badge_notification_1"
+                android:layout_width="20dp"
+                android:textAlignment="center"
+                android:layout_marginTop="5dp"
+                android:visibility="invisible"
+                android:layout_height="wrap_content"
+                android:background="@drawable/not_no"
+                android:layout_toLeftOf="@+id/nav"
+                android:textColor="#FFF"
+                android:textSize="15sp"
+                android:textStyle="bold" />
+        </RelativeLayout>
+
+        <EditText
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:hint="email/mobile"
+            android:paddingLeft="10dp"
+            android:id="@+id/mobile"
+            android:layout_above="@+id/password"
+            android:layout_marginBottom="10dp"
+            android:background="@drawable/login_field_besstoo"
+            />
+        <EditText
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:layout_centerVertical="true"
+            android:hint="password"
+            android:id="@+id/password"
+            android:inputType="textPassword"
+            android:paddingLeft="10dp"
+            android:layout_marginBottom="10dp"
+            android:background="@drawable/login_field_besstoo"
+            />
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/proceed_besstoo"
+            android:layout_centerHorizontal="true"
+            android:layout_below="@+id/password"
+            android:layout_marginBottom="10dp"
+            android:id="@+id/proceed" />
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/sign_up"
+            android:layout_below="@+id/proceed"
+            android:layout_centerHorizontal="true"
+            android:src="@drawable/besstoo_sign_up"
+            />
+        <include android:id="@+id/nav_slide"
+            android:layout_below="@+id/nav_layout"
+            android:layout_width="200dp"
+            android:layout_alignParentRight="true"
+            android:layout_alignParentEnd="true"
+            android:visibility="gone"
+            android:layout_height="wrap_content"
+            layout="@layout/library"/>
+
+
+    </RelativeLayout>
+
+
+
+
+    </android.support.design.widget.CoordinatorLayout>
+
+</RelativeLayout>
