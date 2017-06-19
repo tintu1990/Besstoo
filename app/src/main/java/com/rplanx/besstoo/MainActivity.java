@@ -2,6 +2,7 @@ package com.rplanx.besstoo;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.support.annotation.NonNull;
 import android.support.design.widget.NavigationView;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
@@ -28,7 +29,7 @@ public class MainActivity extends AppCompatActivity {
         NavigationView rightNavigationView = (NavigationView) findViewById(R.id.nav_right_view);
         rightNavigationView.setNavigationItemSelectedListener(new NavigationView.OnNavigationItemSelectedListener() {
             @Override
-            public boolean onNavigationItemSelected(MenuItem item) {
+            public boolean onNavigationItemSelected(@NonNull MenuItem item) {
                 // Handle Right navigation view item clicks here.
                 int id = item.getItemId();
 
@@ -60,8 +61,10 @@ public class MainActivity extends AppCompatActivity {
     public void onBackPressed() {
         if (drawer.isDrawerOpen(GravityCompat.START)) {
             drawer.closeDrawer(GravityCompat.START);
+
         } else if (drawer.isDrawerOpen(GravityCompat.END)) {  /*Closes the Appropriate Drawer*/
             drawer.closeDrawer(GravityCompat.END);
+
         } else {
             super.onBackPressed();
             System.exit(0);

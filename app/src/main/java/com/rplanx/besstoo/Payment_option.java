@@ -31,14 +31,11 @@ public class Payment_option extends Activity  implements SimpleGestureFilter.Sim
         Display mDisplay = Payment_option.this.getWindowManager().getDefaultDisplay();
         width = mDisplay.getWidth();
         height = mDisplay.getHeight();
-       /* layouttobring.setPadding(40 ,0,0,0);*/
-        // layouttobring.setLayoutParams(new RelativeLayout.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.MATCH_PARENT));
         slide_menu_layout=(RelativeLayout)layouttobring.findViewById(R.id.slide_menu_layout1);
         simple_detector = new SimpleGestureFilter(this,this);
         nav=(ImageView)findViewById(R.id.nav);
         nav.setOnClickListener(this);
     }
-
     @Override
     public void onSwipe(int direction) {
         String str = "";
@@ -54,10 +51,9 @@ public class Payment_option extends Activity  implements SimpleGestureFilter.Sim
                 layouttobring.setVisibility(View.VISIBLE);
                 flag=1;
                 // post.setVisibility(View.INVISIBLE);
-
                 /*if (str_profile_picture1.equals("")){
 
-                    new DownloadImageTask1(slide_picture).execute("http://bonunio.56h7jbmx8k.us-west-2.elasticbeanstalk.com" + str_profile_picture);
+                new DownloadImageTask1(slide_picture).execute("http://bonunio.56h7jbmx8k.us-west-2.elasticbeanstalk.com" + str_profile_picture);
                 }
 
                 else {
@@ -82,8 +78,7 @@ public class Payment_option extends Activity  implements SimpleGestureFilter.Sim
     public boolean dispatchTouchEvent(MotionEvent event) {
         // TODO Auto-generated method stub
         this.simple_detector.onTouchEvent(event);
-
-       /* float StartX = 0, EndX = 0, EndY = 0, diffX, diffY , upX, upY;
+        /* float StartX = 0, EndX = 0, EndY = 0, diffX, diffY , upX, upY;
         float StartY = 0;
         switch (event.getAction())
         {
@@ -107,9 +102,7 @@ public class Payment_option extends Activity  implements SimpleGestureFilter.Sim
             }
             case MotionEvent.ACTION_UP:
             {
-
-
-                //Consume if necessary and perform the fling / swipe action
+         //Consume if necessary and perform the fling / swipe action
                 //if it has been determined to be a fling / swipe
                 break;
             }
@@ -131,7 +124,6 @@ public class Payment_option extends Activity  implements SimpleGestureFilter.Sim
 
         }*/
         return super.dispatchTouchEvent(event);
-
     }
 
     @Override
@@ -143,7 +135,7 @@ public class Payment_option extends Activity  implements SimpleGestureFilter.Sim
                     layouttobring.setVisibility(View.VISIBLE);
                     layouttobring.startAnimation(animDown);
                     flag=1;
-                }
+                     }
 
                 else{
                     nav.setImageResource(R.drawable.nav);
@@ -151,7 +143,6 @@ public class Payment_option extends Activity  implements SimpleGestureFilter.Sim
                     layouttobring.startAnimation(animUp);
                     flag=0;
                 }
-
                 break;
         }
     }

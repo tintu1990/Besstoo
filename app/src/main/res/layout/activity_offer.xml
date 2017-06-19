@@ -22,21 +22,26 @@
                 android:layout_height="wrap_content"
                 android:layout_centerVertical="true"
                 android:layout_alignParentLeft="true"
+                android:layout_alignParentStart="true"
                 android:src="@drawable/bck"
                 android:id="@+id/back"
                 android:layout_marginRight="5dp"
+                android:layout_marginEnd="5dp"
                 android:layout_marginLeft="10dp"
+                android:layout_marginStart="10dp"
                 />
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_toRightOf="@+id/back"
-                android:text="Offers"
+                android:layout_toEndOf="@+id/back"
+                android:text="@string/offer"
                 android:layout_centerVertical="true"
                 android:textSize="15sp"
                 android:textColor="#ea9c0c"
                 android:layout_marginLeft="10dp"
+                android:layout_marginStart="10dp"
                 />
             <ImageView
                 android:layout_width="wrap_content"
@@ -44,8 +49,11 @@
                 android:src="@drawable/nav"
                 android:id="@+id/nav"
                 android:layout_alignParentRight="true"
+                android:layout_alignParentEnd="true"
                 android:layout_marginRight="10dp"
+                android:layout_marginEnd="10dp"
                 android:layout_marginLeft="5dp"
+                android:layout_marginStart="5dp"
                 android:layout_centerVertical="true"
                 />
 
@@ -53,9 +61,11 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_toLeftOf="@+id/nav"
+                android:layout_toStartOf="@+id/nav"
                 android:src="@drawable/noti"
                 android:layout_centerVertical="true"
                 android:layout_marginRight="10dp"
+                android:layout_marginEnd="10dp"
                 />
 
         </RelativeLayout>
@@ -88,6 +98,7 @@
             android:layout_below="@+id/nav_layout"
             android:layout_width="200dp"
             android:layout_alignParentRight="true"
+            android:layout_alignParentEnd="true"
             android:visibility="gone"
             android:layout_height="wrap_content"
             layout="@layout/library"/>

@@ -24,7 +24,6 @@
             android:layout_marginRight="5dp"
             android:layout_marginLeft="10dp"
             />
-
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -54,12 +53,7 @@
             android:layout_centerVertical="true"
             android:layout_marginRight="10dp"
             />
-
     </RelativeLayout>
-
-
-
-
 
     <RelativeLayout
         android:layout_width="match_parent"
@@ -67,9 +61,7 @@
         android:layout_below="@+id/nav_layout"
         android:layout_marginTop="25dp"
         android:id="@+id/r1"
-
         >
-
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -85,9 +77,8 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-           android:layout_toRightOf="@+id/meals"
-           android:layout_marginLeft="100dp"
             android:text="Quantity"
+            android:layout_centerHorizontal="true"
             android:id="@+id/qua"
             android:textColor="#ea9c0c"
             android:textAppearance="?android:attr/textAppearanceMedium"
@@ -102,8 +93,6 @@
             android:textColor="#ea9c0c"
             android:textAppearance="?android:attr/textAppearanceMedium"
             />
-
-
     </RelativeLayout>
 
     <ListView
@@ -112,20 +101,28 @@
         android:id="@+id/cart_list"
         android:layout_below="@id/r1"
         android:paddingBottom="50dp"
-
         >
-
     </ListView>
-
     <RelativeLayout
-        android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-           android:background="@drawable/clear_button"
-            android:id="@+id/clear_button"
+            android:id="@+id/clear1"
             android:layout_below="@+id/cart_list"
-        android:layout_marginTop="-50dp"
+            android:layout_marginTop="-50dp"
             android:layout_centerHorizontal="true"
              >
+
+        <RelativeLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentLeft="true"
+            android:layout_marginLeft="5dp"
+            android:layout_alignParentStart="true"
+            android:background="@drawable/clear_button"
+            android:id="@+id/clear_button"
+            >
+
+
 
         <TextView
             android:layout_width="wrap_content"
@@ -146,11 +143,27 @@
             android:layout_alignParentStart="true"
             android:layout_marginLeft="5dp"
             />
+        </RelativeLayout>
+        <RelativeLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/btn_proceed_cart"
+            android:layout_marginRight="5dp"
+            android:layout_alignParentRight="true"
+            android:background="@drawable/clear_button"
+            >
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="PROCEED"
+                android:textColor="@android:color/white"
+                android:layout_centerVertical="true"
+                android:layout_centerHorizontal="true" />
+        </RelativeLayout>
 
 
+    </RelativeLayout>
 
-
-</RelativeLayout>
-
-
+<!--
+    -->
 </RelativeLayout>

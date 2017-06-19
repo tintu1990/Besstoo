@@ -1,42 +1,76 @@
+<?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical">
 
-    <LinearLayout
+    <RelativeLayout
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:orientation="vertical"
-        android:layout_gravity="center"
+        android:layout_height="350dp"
+       android:layout_gravity="center"
+        android:background="@drawable/besstoo_poup"
         >
-        <ImageView
+        <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="30dp"
-            android:layout_gravity="center"
-            android:id="@+id/imageView2"
-            android:adjustViewBounds="false" />
+            android:text="TODAY"
+            android:id="@+id/today"
+            android:textColor="@color/red"
+            android:layout_alignParentTop="true"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="50dp" />
 
-        <EditText
+
+        <RadioGroup
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:inputType="textPersonName"
-            android:ems="10"
-            android:id="@+id/editText8"
-            android:hint="                   UserName"
-            android:layout_marginTop="30dp"
-            android:layout_gravity="center"
-            android:singleLine="true"
-            android:maxEms="10"
-            android:paddingLeft="10dp" />
+            android:id="@+id/radiogrp1"
+            android:layout_below="@+id/today"
+            android:orientation="vertical"
+            android:layout_marginTop="26dp"
+            android:layout_centerHorizontal="true"
+            >
 
+            <RadioButton
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="12.30 pm-2.00 pm"
+                android:textColor="@android:color/black"
+                android:id="@+id/rb_boy"
+                android:buttonTint="@color/red"
+                android:checked="false"
+                />
+
+            <RadioButton
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="1.30 pm-3.00 pm"
+                android:textColor="@android:color/black"
+                android:id="@+id/rb_girl"
+                android:checked="false"
+                android:buttonTint="@color/red"
+                />
+
+            <!--<RadioButton
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/rd_boy1"
+                android:buttonTint="@color/red"
+                android:textColor="@android:color/black"
+                android:text="8.30 pm -9.15 pm"
+                android:checked="false"
+                />-->
+
+
+        </RadioGroup>
         <Button
-            android:text="Submit"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:id="@+id/button"
-            android:layout_gravity="center"
-            android:layout_marginTop="20dp"
-             />
-    </LinearLayout>
+            android:id="@+id/button_sub"
+            android:background="@drawable/besstoo_proceed"
+            android:layout_centerHorizontal="true"
+            android:layout_alignParentBottom="true"
+            android:layout_marginBottom="30dp"
+            />
+    </RelativeLayout>
 </LinearLayout>

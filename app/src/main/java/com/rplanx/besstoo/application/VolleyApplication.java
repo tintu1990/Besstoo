@@ -1,6 +1,8 @@
 package com.rplanx.besstoo.application;
 
 import android.app.Application;
+import android.content.pm.PackageInfo;
+import android.content.pm.PackageManager;
 
 import com.android.volley.toolbox.Volley;
 
@@ -16,6 +18,7 @@ public class VolleyApplication extends Application {
         super.onCreate();
         mRequestQueue = Volley.newRequestQueue(this);
         sInstance = this;
+
     }
 
     public synchronized static VolleyApplication getInstance() {

@@ -1,7 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:orientation="vertical">
 
     <AutoCompleteTextView
@@ -13,12 +14,115 @@
         android:paddingRight="10dp"
         android:background="@drawable/select_aa"
         />
+    <!--<android.support.v4.widget.SwipeRefreshLayout
+        android:id="@+id/swipeToRefresh_bake"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">-->
+    <com.baoyz.widget.PullRefreshLayout
+        android:id="@+id/swipeToRefresh_bake"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
     <ListView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:fastScrollEnabled="false"
+        android:paddingBottom="50dp"
+        android:clipToPadding="false"
         android:id="@+id/list2"
         >
-
     </ListView>
+    </com.baoyz.widget.PullRefreshLayout>
+    <!--</android.support.v4.widget.SwipeRefreshLayout>-->
 
-</LinearLayout>
+    <ProgressBar
+        style="?android:attr/progressBarStyleLarge"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/progressBar1"
+        android:layout_centerHorizontal="true"
+        android:layout_centerVertical="true"
+        android:layout_below="@+id/select_address"
+        android:progressDrawable="@drawable/circular_progress_bar"
+        />
+
+    <com.github.clans.fab.FloatingActionMenu
+        android:id="@+id/menu_labels_right"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:paddingRight="10dp"
+        android:paddingBottom="10dp"
+        android:paddingLeft="10dp"
+        fab:menu_labels_ellipsize="end"
+        fab:menu_labels_singleLine="true"
+        fab:menu_backgroundColor="#ccffffff"
+        fab:menu_labels_position="left"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        fab:menu_colorNormal="@color/colorAccent"
+        fab:menu_colorPressed="@color/colorAccent"
+        fab:menu_colorRipple="@color/colorAccent"
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:fab="http://schemas.android.com/apk/res-auto">
+
+        <com.github.clans.fab.FloatingActionButton
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            fab:fab_size="mini"
+            android:id="@+id/select_time_slot"
+            android:src="@drawable/besstoo_time_slot1"
+            fab:fab_colorNormal="@color/colorAccent"
+            fab:fab_colorPressed="@color/colorAccent"
+            android:visibility="gone"
+            fab:fab_colorRipple="@color/colorAccent"
+            fab:fab_label="Select time slot" />
+
+        <com.github.clans.fab.FloatingActionButton
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            fab:fab_size="mini"
+            android:id="@+id/chocolates"
+            android:src="@drawable/besstoo_choco1"
+            fab:fab_colorNormal="@color/colorAccent"
+            fab:fab_colorPressed="@color/colorAccent"
+            fab:fab_colorRipple="@color/colorAccent"
+            fab:fab_label="Chocolates"
+            />
+
+        <com.github.clans.fab.FloatingActionButton
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            fab:fab_size="mini"
+            android:id="@+id/cakes"
+            android:src="@drawable/besstoo_cake1"
+            fab:fab_colorNormal="@color/colorAccent"
+            fab:fab_colorPressed="@color/colorAccent"
+            fab:fab_colorRipple="@color/colorAccent"
+            fab:fab_label="Cakes"
+            />
+        <com.github.clans.fab.FloatingActionButton
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            fab:fab_size="mini"
+            android:id="@+id/muffin"
+            android:src="@drawable/besstoo_sweets"
+            fab:fab_colorNormal="@color/colorAccent"
+            fab:fab_colorPressed="@color/colorAccent"
+            fab:fab_colorRipple="@color/colorAccent"
+            fab:fab_label="Sweets"
+            />
+
+    </com.github.clans.fab.FloatingActionMenu>
+
+    <!--<android.support.design.widget.FloatingActionButton
+        android:id="@+id/fab"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentRight="true"
+        android:layout_margin="10dp"
+        android:src="@drawable/nxttt"
+        app:backgroundTint="#ea9c0c"
+        />-->
+
+</RelativeLayout>

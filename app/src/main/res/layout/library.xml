@@ -10,14 +10,13 @@
     <RelativeLayout
         android:layout_width="wrap_content"
         android:layout_height="match_parent"
-
         android:background="@android:color/black"
         >
 
         <RelativeLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:id="@+id/first_r"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/first_r"
             android:layout_marginTop="10dp"
             android:layout_marginBottom="5dp"
 
@@ -38,10 +37,11 @@
            android:layout_width="wrap_content"
            android:layout_height="wrap_content"
            android:layout_centerVertical="true"
-           android:text="Profile"
+           android:text="Login"
+           android:id="@+id/lib_login"
            android:textAppearance="?android:attr/textAppearanceSmall"
            android:textColor="@android:color/white"
-          android:layout_alignParentRight="true"
+           android:layout_alignParentRight="true"
            android:layout_marginRight="10dp"
            android:layout_marginTop="10dp"
            />
@@ -61,6 +61,7 @@
         android:id="@+id/second_r"
         android:layout_below="@+id/first_r"
         android:layout_marginBottom="5dp"
+        android:visibility="gone"
         >
 
         <ImageView
@@ -121,7 +122,7 @@
             android:textAppearance="?android:attr/textAppearanceSmall"
             android:layout_marginRight="10dp"
             android:layout_centerVertical="true"
-            android:text="Order"
+            android:text=" My Orders"
             android:textColor="@android:color/white"
             android:layout_alignParentRight="true"
             android:layout_marginTop="10dp"
@@ -139,6 +140,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:id="@+id/fourth_r"
+            android:visibility="gone"
         android:layout_below="@+id/third_r"
         android:layout_marginBottom="5dp"
         >
@@ -153,14 +155,13 @@
             android:src="@drawable/notification1"
             android:layout_marginLeft="10dp"
             android:layout_marginRight="5dp"
-
             />
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginRight="10dp"
             android:layout_centerVertical="true"
-            android:text="Notification"
+            android:text=" My Notifications"
             android:textColor="@android:color/white"
             android:textAppearance="?android:attr/textAppearanceSmall"
             android:layout_alignParentRight="true"
@@ -200,8 +201,9 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_centerVertical="true"
-            android:text="About"
+            android:text="About Us"
             android:layout_marginRight="10dp"
+            android:id="@+id/txt_about_us"
             android:textAppearance="?android:attr/textAppearanceSmall"
             android:textColor="@android:color/white"
             android:layout_alignParentRight="true"
@@ -219,9 +221,264 @@
     </RelativeLayout>
 
 
+
+      <!--  <RelativeLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/fifth_r"
+            android:id="@+id/sixth_r"
+            >
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentStart="true"
+                android:layout_alignParentLeft="true"
+                android:id="@+id/contact"
+                android:layout_marginTop="10dp"
+                android:src="@drawable/contact_us"
+                android:layout_marginLeft="10dp"
+                android:layout_marginRight="5dp"
+                />
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:text="Support"
+                android:layout_marginRight="10dp"
+                android:id="@+id/txt_contactus"
+                android:textAppearance="?android:attr/textAppearanceSmall"
+                android:textColor="@android:color/white"
+                android:layout_alignParentRight="true"
+                android:layout_marginTop="10dp"
+                />
+
+            <ImageView
+                android:layout_width="match_parent"
+                android:layout_height="2dp"
+                android:layout_below="@+id/contact"
+                android:src="@drawable/dotted"
+                android:layout_marginTop="5dp"
+                android:layerType="software"
+                />
+
+
+        </RelativeLayout>-->
+
+        <RelativeLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/seventh_r"
+            android:layout_below="@+id/fifth_r"
+            >
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentStart="true"
+                android:layout_alignParentLeft="true"
+                android:id="@+id/privacy"
+                android:layout_marginTop="10dp"
+                android:src="@drawable/shield"
+                android:layout_marginLeft="10dp"
+                android:layout_marginRight="5dp"
+                />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:text="Privacy Policy"
+                android:layout_marginRight="10dp"
+                android:id="@+id/txt_privacy"
+                android:textAppearance="?android:attr/textAppearanceSmall"
+                android:textColor="@android:color/white"
+                android:layout_alignParentRight="true"
+                android:layout_marginTop="10dp"
+                />
+
+            <ImageView
+                android:layout_width="match_parent"
+                android:layout_height="2dp"
+                android:layout_below="@+id/privacy"
+                android:src="@drawable/dotted"
+                android:layout_marginTop="5dp"
+                android:layerType="software"
+                />
+
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/eighth_r"
+            android:layout_below="@+id/seventh_r"
+            >
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentStart="true"
+                android:layout_alignParentLeft="true"
+                android:id="@+id/Quality"
+                android:layout_marginTop="10dp"
+                android:src="@drawable/quality"
+                android:layout_marginLeft="10dp"
+                android:layout_marginRight="5dp"
+                />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:text="Quality Policy"
+                android:layout_marginRight="10dp"
+                android:id="@+id/txt_quality"
+                android:textAppearance="?android:attr/textAppearanceSmall"
+                android:textColor="@android:color/white"
+                android:layout_alignParentRight="true"
+                android:layout_marginTop="10dp"
+                />
+            <ImageView
+                android:layout_width="match_parent"
+                android:layout_height="2dp"
+                android:layout_below="@+id/Quality"
+                android:src="@drawable/dotted"
+                android:layout_marginTop="5dp"
+                android:layerType="software"
+                />
+
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/ninth_r"
+            android:layout_below="@+id/eighth_r"
+            >
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentStart="true"
+                android:layout_alignParentLeft="true"
+                android:id="@+id/terms"
+                android:layout_marginTop="10dp"
+                android:src="@drawable/terms"
+                android:layout_marginLeft="10dp"
+                android:layout_marginRight="5dp"
+                />
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:text="Terms  Conditions"
+                android:layout_marginRight="10dp"
+                android:id="@+id/txt_terms"
+                android:textAppearance="?android:attr/textAppearanceSmall"
+                android:textColor="@android:color/white"
+                android:layout_alignParentRight="true"
+                android:layout_marginTop="10dp"
+                />
+
+            <ImageView
+                android:layout_width="match_parent"
+                android:layout_height="2dp"
+                android:layout_below="@+id/terms"
+                android:src="@drawable/dotted"
+                android:layout_marginTop="5dp"
+                android:layerType="software"
+                />
+
+
+        </RelativeLayout>
+        <RelativeLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/sixth_r"
+            android:id="@+id/tenth_r"
+            >
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentStart="true"
+                android:layout_alignParentLeft="true"
+                android:id="@+id/version"
+                android:layout_marginTop="10dp"
+                android:src="@drawable/besstoo_version"
+                android:layout_marginLeft="10dp"
+                android:layout_marginRight="5dp"
+                />
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:text="Version:1.0.3"
+                android:layout_marginRight="10dp"
+                android:id="@+id/txt_version"
+                android:textAppearance="?android:attr/textAppearanceSmall"
+                android:textColor="@android:color/white"
+                android:layout_alignParentRight="true"
+                android:layout_marginTop="10dp"
+                />
+
+            <ImageView
+                android:layout_width="match_parent"
+                android:layout_height="2dp"
+                android:layout_below="@+id/version"
+                android:src="@drawable/dotted"
+                android:layout_marginTop="5dp"
+                android:layerType="software"
+                />
+
+
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/ninth_r"
+            android:id="@+id/sixth_r"
+            >
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentStart="true"
+                android:layout_alignParentLeft="true"
+                android:id="@+id/contact"
+                android:layout_marginTop="10dp"
+                android:src="@drawable/contact_us"
+                android:layout_marginLeft="10dp"
+                android:layout_marginRight="5dp"
+                />
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:text="Support"
+                android:layout_marginRight="10dp"
+                android:id="@+id/txt_contactus"
+                android:textAppearance="?android:attr/textAppearanceSmall"
+                android:textColor="@android:color/white"
+                android:layout_alignParentRight="true"
+                android:layout_marginTop="10dp"
+                />
+
+            <ImageView
+                android:layout_width="match_parent"
+                android:layout_height="2dp"
+                android:layout_below="@+id/contact"
+                android:src="@drawable/dotted"
+                android:layout_marginTop="5dp"
+                android:layerType="software"
+                />
+
+
+        </RelativeLayout>
+
+
+
+
+
     </RelativeLayout>
-
-
-
 
 </RelativeLayout>

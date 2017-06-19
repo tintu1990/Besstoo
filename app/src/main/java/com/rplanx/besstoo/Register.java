@@ -7,6 +7,7 @@ import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.IntentFilter;
+import android.content.SharedPreferences;
 import android.content.pm.PackageManager;
 import android.graphics.Color;
 import android.os.Bundle;
@@ -31,6 +32,7 @@ import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.android.volley.DefaultRetryPolicy;
 import com.android.volley.NetworkResponse;
 import com.android.volley.Request;
 import com.android.volley.RequestQueue;
@@ -38,12 +40,14 @@ import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
+import com.rplanx.besstoo.constant.Constant;
 
 import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.util.HashMap;
 import java.util.Map;
+import java.util.regex.Pattern;
 
 public class Register extends AppCompatActivity implements  View.OnClickListener ,SimpleGestureFilter.SimpleGestureListener{
     RelativeLayout rl_back;
@@ -72,9 +76,16 @@ public class Register extends AppCompatActivity implements  View.OnClickListener
     RelativeLayout profile;
     RelativeLayout slide_menu_layout;
     ImageView nav;
+    TextView txt_logout;
     View layouttobring;
-    String JSON_URL = "http://192.168.3.8/besstoo/public/service/do_register";
-    String JSON_URI = "http://192.168.3.8/besstoo/public/service/otp_verification";
+    String str_reg="";
+    String JSON_URL= Constant.URL+"do_register";
+    //String JSON_URL = "http://besstoo.com/public/service/do_register";
+    //String JSON_URI = "http://besstoo.com/public/service/otp_verification";
+    String JSON_URI=Constant.URL+"otp_verification";
+    String JSON_RESEND_OTP=Constant.URL+"resend";
+    // String JSON_RESEND_OTP="http://besstoo.com/public/service/resend";
+    ImageView login;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -83,6 +94,7 @@ public class Register extends AppCompatActivity implements  View.OnClickListener
         email = (EditText) findViewById(R.id.edt_email);
         password = (EditText) findViewById(R.id.edt_password);
         name = (EditText) findViewById(R.id.edt_name);
+        txt_logout=(TextView)findViewById(R.id.tx_log_out);
         nav=(ImageView)findViewById(R.id.nav);
         mobile = (EditText) findViewById(R.id.edt_phone);
         rl_back = (RelativeLayout) findViewById(R.id.back_layout);
@@ -93,6 +105,9 @@ public class Register extends AppCompatActivity implements  View.OnClickListener
         Display mDisplay = Register.this.getWindowManager().getDefaultDisplay();
         width = mDisplay.getWidth();
         height = mDisplay.getHeight();
+        txt_logout.setOnClickListener(this);
+        login=(ImageView)findViewById(R.id.btn_log_in);
+        login.setOnClickListener(this);
         slide_menu_layout=(RelativeLayout)layouttobring.findViewById(R.id.slide_menu_layout1);
         nav.setOnClickListener(this);
         profile.setOnClickListener(this);
@@ -102,6 +117,14 @@ public class Register extends AppCompatActivity implements  View.OnClickListener
         }
         coordinatorLayout = (CoordinatorLayout) findViewById(R.id
                 .coordinatorLayout);
+        SharedPreferences sharedPreferences=getSharedPreferences("login",Context.MODE_PRIVATE);
+        /*if (sharedPreferences.contains("user_id")){
+           txt_logout.setVisibility(View.VISIBLE);
+        }
+        else{
+            txt_logout.setVisibility(View.GONE);
+        }*/
+
         imageView = (ImageView) findViewById(R.id.btn_save);
         if (ContextCompat.checkSelfPermission(c, android.Manifest.permission.RECEIVE_SMS) != PackageManager.PERMISSION_GRANTED && ActivityCompat.checkSelfPermission(c, android.Manifest.permission.READ_SMS) != PackageManager.PERMISSION_GRANTED && ActivityCompat.checkSelfPermission(c, android.Manifest.permission.SEND_SMS) != PackageManager.PERMISSION_GRANTED) {
             ActivityCompat.requestPermissions(Register.this, new String[]{permission.RECEIVE_SMS, permission.READ_SMS}, 1);
@@ -111,14 +134,15 @@ public class Register extends AppCompatActivity implements  View.OnClickListener
         rl_back.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                if (str_intent.equals("")){
+                onBackPressed();
+                /*if (str_intent.equals("")){
                     Intent intent = new Intent(Register.this, Food_list.class);
                     startActivity(intent);
                 }
                 else{
                     Intent intent=new Intent(Register.this,Login.class);
                     startActivity(intent);
-                }
+                }*/
 
             }
         });
@@ -146,14 +170,18 @@ public class Register extends AppCompatActivity implements  View.OnClickListener
                     }
                 });
                 closeActivity.start();
+                break;
 
-
+            case R.id.btn_log_in:
+                Intent intents=new Intent(Register.this,Login.class);
+                intents.putExtra("reg","reg");
+                startActivity(intents);
                 break;
 
             case R.id.nav:
                 final LayoutInflater factory = getLayoutInflater();
                 final View textEntryView = factory.inflate(R.layout.food_list1, null);
-                ListView listView=(ListView)textEntryView.findViewById(R.id.list1);
+                @SuppressWarnings("UnusedAssignment") ListView listView=(ListView)textEntryView.findViewById(R.id.list1);
                 // View view1 = LayoutInflater.from(getApplication()).inflate(R.layout.food_list1, null);
                 //   ListView listView=(ListView)view1.findViewById(R.id.list1);
                 if (flag==0){
@@ -168,10 +196,18 @@ public class Register extends AppCompatActivity implements  View.OnClickListener
                     layouttobring.setVisibility(View.GONE);
                     layouttobring.startAnimation(animUp);
                     flag=0;
-
-
                 }
                 break;
+/*
+            case R.id.tx_log_out:
+                SharedPreferences sharedPreferences=getSharedPreferences("login",Context.MODE_PRIVATE);
+                SharedPreferences.Editor editor = sharedPreferences.edit();
+                editor.clear();
+                editor.apply();
+                Intent intent =new Intent(Register.this,Food_list.class);
+                startActivity(intent);
+
+                break;*/
 
             case R.id.btn_save:
                 str_email = email.getText().toString();
@@ -195,7 +231,14 @@ public class Register extends AppCompatActivity implements  View.OnClickListener
                     textView.setText("Enter  valid email");
                     textView.setTextColor(Color.YELLOW);
                     snackbar.show();
-                } else {
+                }
+                else if(!Pattern.matches("^[789]\\d{9}$", str_mobile)){
+                    TextView textView = (TextView) snackbarView.findViewById(android.support.design.R.id.snackbar_text);
+                    textView.setText("Enter  valid phone number");
+                    textView.setTextColor(Color.YELLOW);
+                    snackbar.show();
+                }
+                else {
                     sendRequest();
                 }
 
@@ -238,6 +281,10 @@ public class Register extends AppCompatActivity implements  View.OnClickListener
                             JSONObject jsonObject = new JSONObject(response);
                             Toast.makeText(Register.this,jsonObject.getString("Status"),Toast.LENGTH_LONG).show();
 
+                            Intent intent=new Intent(Register.this,Login.class);
+                            intent.putExtra("reg","reg");
+                            startActivity(intent);
+
                         } catch (JSONException e) {
                             e.printStackTrace();
                         }
@@ -265,6 +312,7 @@ public class Register extends AppCompatActivity implements  View.OnClickListener
                 return params;
             }
         };
+        stringRequest.setRetryPolicy(new DefaultRetryPolicy(0, -1, 0));
         RequestQueue requestQueue = Volley.newRequestQueue(this);
         requestQueue.add(stringRequest);
 //        progressDialog = new ProgressDialog(.this);
@@ -290,12 +338,14 @@ public class Register extends AppCompatActivity implements  View.OnClickListener
                 AlertDialog.Builder alertDialogBuilderUserInput = new AlertDialog.Builder(c);
                 alertDialogBuilderUserInput.setView(mView);
                 final EditText userInputDialogEditText = (EditText) mView.findViewById(R.id.userInputDialog);
-                if (!message.equals("")){
-                    userInputDialogEditText.setText(message);
-                }
-
-                alertDialogBuilderUserInput
+                                alertDialogBuilderUserInput
                         .setCancelable(false)
+                        .setNegativeButton("Resend OTP", new DialogInterface.OnClickListener() {
+                            @Override
+                            public void onClick(DialogInterface dialogInterface, int i) {
+                                sendRequest3();
+                            }
+                        })
                         .setPositiveButton("Send", new DialogInterface.OnClickListener() {
                             public void onClick(DialogInterface dialogBox, int id) {
                                 m=userInputDialogEditText.getText().toString();
@@ -305,18 +355,12 @@ public class Register extends AppCompatActivity implements  View.OnClickListener
                                 else{
                                     sendRequest1();
                                 }
-
                                 // ToDo get user input here
                                 dialogBox.cancel();
                             }
                         });
-
-
-                AlertDialog alertDialogAndroid = alertDialogBuilderUserInput.create();
-                alertDialogAndroid.show();
-
-
-
+                                AlertDialog alertDialogAndroid = alertDialogBuilderUserInput.create();
+                                alertDialogAndroid.show();
                             }
                             else{
                                 Toast.makeText(Register.this,jsonObject.getString("Status"),Toast.LENGTH_LONG).show();
@@ -350,8 +394,10 @@ public class Register extends AppCompatActivity implements  View.OnClickListener
                 return  params;
             }
         };
+        stringRequest.setRetryPolicy(new DefaultRetryPolicy(0, -1, 0));
         RequestQueue requestQueue = Volley.newRequestQueue(this);
         requestQueue.add(stringRequest);
+
         progressDialog = new ProgressDialog(Register.this);
         progressDialog.setMessage("Registering please wait....");
         progressDialog.show();
@@ -382,7 +428,7 @@ public class Register extends AppCompatActivity implements  View.OnClickListener
 
     @Override
     public void onSwipe(int direction) {
-        String str = "";
+        @SuppressWarnings("UnusedAssignment") String str = "";
         switch (direction) {
             case SimpleGestureFilter.SWIPE_RIGHT :
                 if (flag==1) {
@@ -390,6 +436,7 @@ public class Register extends AppCompatActivity implements  View.OnClickListener
                     layouttobring.startAnimation(animUp);
                     layouttobring.setVisibility(View.GONE);
                     flag = 0;
+                    //noinspection UnusedAssignment
                     str = "Swipe Right";
                 }
                 break;
@@ -462,12 +509,57 @@ public class Register extends AppCompatActivity implements  View.OnClickListener
         }*/
         return super.dispatchTouchEvent(event);
 
-
-
     }
 
     @Override
     public void onDoubleTap() {
 
     }
+
+    private void sendRequest3() {
+        StringRequest stringRequest = new StringRequest(Request.Method.POST, JSON_RESEND_OTP,
+                new Response.Listener<String>() {
+                    @Override
+                    public void onResponse(String response) {
+                        // progressDialog.dismiss();
+                        try {
+                            JSONObject jsonObject = new JSONObject(response);
+                            Toast.makeText(Register.this,jsonObject.getString("Status"),Toast.LENGTH_LONG).show();
+
+                        } catch (JSONException e) {
+                            e.printStackTrace();
+                        }
+
+                    }
+                },
+                new Response.ErrorListener() {
+                    @Override
+                    public void onErrorResponse(VolleyError error) {
+                        // progressDialog.dismiss();
+                        NetworkResponse response = error.networkResponse;
+                        if (response != null && response.data != null) {
+                            String errorMessage = error.getClass().getSimpleName();
+                            if (!TextUtils.isEmpty(errorMessage)) {
+                                Toast.makeText(Register.this, "errorMessage:" + errorMessage, Toast.LENGTH_SHORT).show();
+                            }
+                        }
+                    }
+                }) {
+            @Override
+            protected Map<String, String> getParams() {
+                Map<String, String> params = new HashMap<String, String>();
+                params.put("mobile_no", str_mobile);
+
+                return params;
+            }
+        };
+        stringRequest.setRetryPolicy(new DefaultRetryPolicy(0, -1, 0));
+        RequestQueue requestQueue = Volley.newRequestQueue(this);
+        requestQueue.add(stringRequest);
+//        progressDialog = new ProgressDialog(.this);
+//        progressDialog.setMessage("Fetching The File....");
+//        progressDialog.show();
+    }
+
+
 }

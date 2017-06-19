@@ -8,7 +8,8 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:id="@+id/coordinatorLayout">
-    <RelativeLayout
+
+        <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:id="@+id/l1"
@@ -33,10 +34,13 @@
                     android:layout_height="wrap_content"
                     android:layout_centerVertical="true"
                     android:layout_alignParentLeft="true"
+                    android:layout_alignParentStart="true"
                     android:src="@drawable/bck"
                     android:id="@+id/back"
                     android:layout_marginRight="5dp"
+                    android:layout_marginEnd="5dp"
                     android:layout_marginLeft="10dp"
+                    android:layout_marginStart="10dp"
                     />
             </RelativeLayout>
 
@@ -44,11 +48,13 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_toRightOf="@+id/back_layout"
-                android:text="LOGIN/SIGNUP"
+                android:layout_toEndOf="@+id/back_layout"
+                android:text="Login"
                 android:layout_centerVertical="true"
                 android:textSize="15sp"
                 android:textColor="#ea9c0c"
                 android:layout_marginLeft="10dp"
+                android:layout_marginStart="10dp"
                 />
             <ImageView
                 android:layout_width="wrap_content"
@@ -56,6 +62,8 @@
                 android:src="@drawable/navs"
                 android:id="@+id/nav"
                 android:layout_alignParentRight="true"
+                android:visibility="gone"
+                android:layout_alignParentEnd="true"
                 android:layout_marginRight="10dp"
                 android:layout_marginLeft="10dp"
                 android:layout_centerVertical="true"
@@ -64,6 +72,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_toLeftOf="@+id/nav"
+                android:layout_toStartOf="@+id/nav"
                 android:src="@drawable/noti"
                 android:id="@+id/noti"
                 android:visibility="gone"
@@ -78,6 +87,7 @@
                 android:layout_height="wrap_content"
                 android:background="@drawable/not_no"
                 android:layout_toLeftOf="@+id/nav"
+                android:layout_toStartOf="@+id/nav"
                 android:textColor="#FFF"
                 android:textSize="15sp"
                 android:textStyle="bold" />
@@ -87,8 +97,9 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_centerHorizontal="true"
-            android:hint="email/mobile"
+            android:hint="Email/Mobile"
             android:paddingLeft="10dp"
+            android:paddingStart="10dp"
             android:id="@+id/mobile"
             android:layout_above="@+id/password"
             android:layout_marginBottom="10dp"
@@ -99,10 +110,11 @@
             android:layout_height="wrap_content"
             android:layout_centerHorizontal="true"
             android:layout_centerVertical="true"
-            android:hint="password"
+            android:hint="Password"
             android:id="@+id/password"
             android:inputType="textPassword"
             android:paddingLeft="10dp"
+            android:paddingStart="10dp"
             android:layout_marginBottom="10dp"
             android:background="@drawable/login_field_besstoo"
             />
@@ -121,9 +133,19 @@
             android:id="@+id/sign_up"
             android:layout_below="@+id/proceed"
             android:layout_centerHorizontal="true"
-            android:src="@drawable/besstoo_sign_up"
+            android:src="@drawable/besstoo_big_signup"
+            android:layout_marginBottom="10dp"
             />
-        <include android:id="@+id/nav_slide"
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Forgot Password?"
+                android:id="@+id/forgot_pass"
+                android:layout_below="@+id/sign_up"
+                android:textColor="@android:color/holo_red_light"
+                android:layout_centerHorizontal="true"
+                />
+            <include android:id="@+id/nav_slide"
             android:layout_below="@+id/nav_layout"
             android:layout_width="200dp"
             android:layout_alignParentRight="true"
@@ -131,13 +153,7 @@
             android:visibility="gone"
             android:layout_height="wrap_content"
             layout="@layout/library"/>
-
-
     </RelativeLayout>
-
-
-
-
     </android.support.design.widget.CoordinatorLayout>
 
 </RelativeLayout>

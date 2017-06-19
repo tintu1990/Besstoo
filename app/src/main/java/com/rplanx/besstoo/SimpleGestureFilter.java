@@ -13,7 +13,7 @@ public class SimpleGestureFilter extends GestureDetector.SimpleOnGestureListener
     public final static int SWIPE_LEFT  = 3;
     public final static int SWIPE_RIGHT = 4;
 
-    public final static int MODE_TRANSPARENT = 0;
+   // public final static int MODE_TRANSPARENT = 0;
     public final static int MODE_SOLID       = 1;
     public final static int MODE_DYNAMIC     = 2;
 
@@ -59,7 +59,7 @@ public class SimpleGestureFilter extends GestureDetector.SimpleOnGestureListener
         //else just do nothing, it's Transparent
     }
 
-    public void setMode(int m){
+   /* public void setMode(int m){
         this.mode = m;
     }
 
@@ -94,7 +94,7 @@ public class SimpleGestureFilter extends GestureDetector.SimpleOnGestureListener
     public int getSwipeMinVelocity(){
         return this.swipe_Min_Velocity;
     }
-
+*/
     @Override
     public boolean onFling(MotionEvent e1, MotionEvent e2, float velocityX,
                            float velocityY) {
@@ -155,7 +155,7 @@ public class SimpleGestureFilter extends GestureDetector.SimpleOnGestureListener
         return false;
     }
 
-    static interface SimpleGestureListener{
+    interface SimpleGestureListener{
         void onSwipe(int direction);
         void onDoubleTap();
     }

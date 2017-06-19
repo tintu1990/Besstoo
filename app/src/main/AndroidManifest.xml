@@ -12,6 +12,7 @@
     <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
     <uses-permission android:name="android.permission.RECEIVE_SMS" />
     <uses-permission android:name="android.permission.READ_SMS" />
     <uses-permission android:name="android.permission.SEND_SMS" />
@@ -19,16 +20,20 @@
     <application
         android:name=".application.VolleyApplication"
         android:allowBackup="true"
-        android:icon="@mipmap/ic_launcher"
+        android:icon="@mipmap/besstoo_launcher"
         android:label="@string/app_name"
         android:supportsRtl="true"
+        android:largeHeap="true"
         android:theme="@style/AppTheme"
         tools:replace="android:icon">
-        <receiver android:name="com.rplanx.besstoo.sms.IncomingSms">
+
+        <!-- tools:replace="android:icon"> -->
+        <receiver android:name=".sms.IncomingSms">
             <intent-filter>
                 <action android:name="android.provider.Telephony.SMS_RECEIVED" />
             </intent-filter>
         </receiver>
+
         <activity
             android:name=".Splash"
             android:screenOrientation="portrait">
@@ -38,14 +43,58 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".MainActivity" />
-        <activity android:name=".Pick_address" />
-        <activity android:name=".Main2Activity" />
-        <activity android:name=".Payment_option" />
-        <activity android:name=".Offer" />
-        <activity android:name=".Food_list" />
-        <activity android:name=".Register" />
-        <activity android:name=".Login"></activity>
+        <activity
+            android:name=".MainActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".Pick_address"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".Main2Activity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".Payment_option"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".Offer"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".Food_list"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".Register"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".Login"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".PickAddress1"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".PickAddress2"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".Order_section"
+            android:screenOrientation="portrait" />
+
+        <meta-data
+            android:name="com.razorpay.ApiKey"
+            android:value="rzp_live_wsxL4SIUMl1XvX" />
+
+        <activity
+            android:name=".My_order"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".Address_list"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".OrderSection1"
+            android:screenOrientation="portrait" />
+        <activity android:name=".Profile"
+            android:screenOrientation="portrait"
+            >
+
+        </activity>
     </application>
 
 </manifest>

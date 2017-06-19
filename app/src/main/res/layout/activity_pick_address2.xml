@@ -1,0 +1,163 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".MainActivity">
+
+
+    <!--<RelativeLayout-->
+        <!--android:layout_width="match_parent"-->
+        <!--android:layout_height="wrap_content"-->
+        <!--android:id="@+id/nav_layout"-->
+        <!--android:background="@drawable/nav_bck"-->
+        <!--&gt;-->
+        <!--<ImageView-->
+            <!--android:layout_width="wrap_content"-->
+            <!--android:layout_height="wrap_content"-->
+            <!--android:layout_centerVertical="true"-->
+            <!--android:layout_alignParentLeft="true"-->
+            <!--android:layout_alignParentStart="true"-->
+            <!--android:src="@drawable/bck"-->
+            <!--android:id="@+id/back"-->
+            <!--android:layout_marginRight="5dp"-->
+            <!--android:layout_marginEnd="5dp"-->
+            <!--android:layout_marginLeft="10dp"-->
+            <!--android:layout_marginStart="10dp"-->
+            <!--/>-->
+
+        <!--<TextView-->
+            <!--android:layout_width="wrap_content"-->
+            <!--android:layout_height="wrap_content"-->
+            <!--android:layout_toRightOf="@+id/back"-->
+            <!--android:layout_toEndOf="@+id/back"-->
+            <!--android:text="@string/add_address"-->
+            <!--android:layout_centerVertical="true"-->
+            <!--android:textSize="15sp"-->
+            <!--android:textColor="#ea9c0c"-->
+            <!--android:layout_marginLeft="10dp"-->
+            <!--android:layout_marginStart="10dp"-->
+            <!--/>-->
+        <!--<ImageView-->
+            <!--android:layout_width="wrap_content"-->
+            <!--android:layout_height="wrap_content"-->
+            <!--android:src="@drawable/nav"-->
+            <!--android:id="@+id/nav"-->
+            <!--android:layout_alignParentRight="true"-->
+            <!--android:layout_alignParentEnd="true"-->
+            <!--android:layout_marginRight="10dp"-->
+            <!--android:layout_marginEnd="10dp"-->
+            <!--android:layout_marginLeft="5dp"-->
+            <!--android:layout_marginStart="5dp"-->
+            <!--android:layout_centerVertical="true"-->
+            <!--/>-->
+
+        <!--<ImageView-->
+            <!--android:layout_width="wrap_content"-->
+            <!--android:layout_height="wrap_content"-->
+            <!--android:layout_toLeftOf="@+id/nav"-->
+            <!--android:layout_toStartOf="@+id/nav"-->
+            <!--android:src="@drawable/noti"-->
+            <!--android:visibility="gone"-->
+            <!--android:layout_centerVertical="true"-->
+            <!--android:layout_marginRight="10dp"-->
+            <!--android:layout_marginEnd="10dp"-->
+            <!--/>-->
+
+    <!--</RelativeLayout>-->
+
+
+    <RelativeLayout
+        android:layout_width="wrap_content"
+        android:layout_height="300dp"
+        android:layout_below="@id/nav_layout"
+        android:background="@drawable/address_block"
+        android:layout_marginTop="40dp"
+        android:layout_centerHorizontal="true"
+        >
+
+       <!-- <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Add Address"
+            android:layout_marginLeft="10dp"
+            android:layout_marginTop="10dp"
+            android:id="@+id/address"
+            android:textAppearance="?android:attr/textAppearanceMedium"
+            />-->
+
+
+
+
+        <AutoCompleteTextView
+            android:layout_width="250dp"
+            android:layout_height="wrap_content"
+            android:hint="Select your locality"
+            android:layout_marginLeft="10dp"
+            android:layout_marginStart="10dp"
+            android:layout_marginTop="15dp"
+            android:id="@+id/search"
+            android:focusable="true"
+            android:inputType="textNoSuggestions"
+            android:textColorHint="@android:color/black"
+            android:background="@drawable/edit_shape"
+            android:textColor="@android:color/black"
+            android:layout_marginBottom="15dp"
+            android:completionThreshold="1"
+
+            />
+        <EditText
+            android:layout_width="250dp"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="10dp"
+            android:layout_marginStart="10dp"
+            android:layout_below="@+id/search"
+            android:singleLine="true"
+            android:textColor="@android:color/black"
+            android:id="@+id/edt_address2"
+            android:ems="10"
+            android:hint="Name"
+            android:textColorHint="@android:color/black"
+            android:layout_marginTop="15dp"
+            android:layout_marginBottom="15dp"
+            android:background="@drawable/edit_shape"
+            />
+
+        <EditText
+            android:layout_width="250dp"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/edt_address2"
+            android:layout_marginTop="10dp"
+            android:layout_marginLeft="10dp"
+            android:singleLine="true"
+            android:layout_marginStart="10dp"
+            android:textColor="@android:color/black"
+            android:textColorHint="@android:color/black"
+            android:layout_marginBottom="15dp"
+            android:ems="10"
+            android:hint="Address"
+            android:background="@drawable/edit_shape"
+            android:id="@+id/edt_address1"
+            />
+
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="30dp"
+            android:id="@+id/button"
+            android:background="@drawable/add_submit"
+            android:layout_alignParentBottom="true"
+            android:layout_marginBottom="10dp"
+            android:layout_centerHorizontal="true" />
+
+
+    </RelativeLayout>
+
+    <!--<include android:id="@+id/nav_slide"
+        android:layout_below="@+id/nav_layout"
+        android:layout_width="200dp"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentEnd="true"
+        android:visibility="gone"
+        android:layout_height="wrap_content"
+        layout="@layout/library"/>-->
+</RelativeLayout>

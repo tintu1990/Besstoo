@@ -6,11 +6,11 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 import android.widget.ImageView;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import com.android.volley.toolbox.ImageLoader;
 import com.android.volley.toolbox.NetworkImageView;
-import com.daimajia.androidanimations.library.Techniques;
 import com.daimajia.androidviewhover.BlurLayout;
 import com.rplanx.besstoo.BitmapLruCache;
 import com.rplanx.besstoo.R;
@@ -26,16 +26,18 @@ import com.squareup.picasso.Picasso;
 public class CustomAdapter1 extends BaseAdapter {
     CustomButtonListener1 customButtonListener;
     View hover;
-    private ImageLoader mImageLoader;
+     ImageLoader mImageLoader;
     Context c;
     private final ModelDataSet1 productDataSet;
     private final LayoutInflater layoutInflater;
+    int flag;
 
-    public CustomAdapter1(Context c,ModelDataSet1 productDataSet,CustomButtonListener1 customButtonListener,LayoutInflater layoutInflater) {
+    public CustomAdapter1(Context c,ModelDataSet1 productDataSet,CustomButtonListener1 customButtonListener,int flag,LayoutInflater layoutInflater) {
         this.c=c;
         this.productDataSet = productDataSet;
         this.customButtonListener=customButtonListener;
         this.layoutInflater=layoutInflater;
+        this.flag=flag;
         mImageLoader=new ImageLoader(VolleyApplication.getInstance().getRequestQueue(),new BitmapLruCache());
     }
 
@@ -66,8 +68,9 @@ public class CustomAdapter1 extends BaseAdapter {
             view1 = createView(viewGroup);
             view1.setTag(NewHolder1.from(view1));
         }
-        Model2 product = productDataSet.get(i);
+
         NewHolder1 viewHolder = (NewHolder1) view1.getTag();
+        Model2 product = productDataSet.get(i);
         update(viewHolder, product);
         return view1;
     }
@@ -77,22 +80,60 @@ public class CustomAdapter1 extends BaseAdapter {
     }
 
     private void update(final NewHolder1 viewHolder, final Model2 product) {
-        hover = LayoutInflater.from(c).inflate(R.layout.hover_sample4, null);
+
         viewHolder.imageView.setScaleType(NetworkImageView.ScaleType.FIT_XY);
-        Picasso.with(c).load(product.getImage()).fit().into(viewHolder.imageView);
+        Picasso.with(c).load(product.getImage()).placeholder(R.drawable.besstoo_loadings).fit().into(viewHolder.imageView);
         viewHolder.txt_quantity.setText(String.valueOf(product.getQuantity()));
        /* viewHolder.desc.setText(product.getDescription());*/
-        viewHolder.txt_name.setText(product.getNames());
-        viewHolder.no_of_item.setText("Quantity" + " " + product.getNo_of_item());
-        viewHolder.rupee.setText("Rs." + " " + product.getRuppee() + "/-");
-        viewHolder.blurLayout.setHoverView(hover);
-        TextView textView = (TextView) hover.findViewById(R.id.content);
-        textView.setText(product.getDescription());
-        viewHolder.blurLayout.enableZoomBackground(true);
-        viewHolder.blurLayout.setBlurDuration(1200);
-        viewHolder.blurLayout.addChildAppearAnimator(hover, R.id.content, Techniques.BounceIn);
-        viewHolder.blurLayout.addChildDisappearAnimator(hover, R.id.content, Techniques.FadeOutUp);
-       viewHolder.plus.setOnClickListener(new View.OnClickListener() {
+        viewHolder.txt_name.setText(product.getStr_food_name());
+        if (flag==1){
+            viewHolder.no_of_item.setText(product.getFrom_kitchen());
+        }
+        else if (flag==2){
+            viewHolder.no_of_item.setText(product.getDescription());
+        }
+        else{
+            viewHolder.no_of_item.setText(product.getDescription());
+        }
+
+       // hover = LayoutInflater.from(c).inflate(R.layout.hover_sample4, null);
+       /* hover.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                viewHolder.blurLayout.setHoverView(hover);
+                viewHolder.blurLayout.enableZoomBackground(true);
+                viewHolder.blurLayout.setBlurDuration(1200);
+                viewHolder.blurLayout.addChildAppearAnimator(hover, R.id.content, Techniques.BounceIn);
+                viewHolder.blurLayout.addChildDisappearAnimator(hover, R.id.content, Techniques.FadeOutUp);
+                TextView textView = (TextView) hover.findViewById(R.id.content);
+                textView.setText(product.getDescription());
+            }
+        });*/
+
+        viewHolder.rupee.setText(c.getResources().getString(R.string.Rs) + " " + product.getRuppee() + "/-");
+       /* viewHolder.relativeLayout.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+                viewHolder.blurLayout.enableZoomBackground(true);
+                viewHolder.blurLayout.setBlurDuration(1200);
+                viewHolder.blurLayout.addChildAppearAnimator(hover, R.id.content, Techniques.BounceIn);
+                viewHolder.blurLayout.addChildDisappearAnimator(hover, R.id.content, Techniques.FadeOutUp);
+            }
+        });*/
+        try {
+
+
+            if (Integer.parseInt(product.getNo_of_item()) <= 0) {
+                viewHolder.stock_empty.setVisibility(View.VISIBLE);
+            } else {
+                viewHolder.stock_empty.setVisibility(View.GONE);
+            }
+        }catch ( java.lang.NumberFormatException e){
+            e.printStackTrace();
+        }
+
+        viewHolder.plus.setOnClickListener(new View.OnClickListener() {
 
             @Override
             public void onClick(View view) {
@@ -105,12 +146,13 @@ public class CustomAdapter1 extends BaseAdapter {
         viewHolder.minus.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                int n1=product.getQuantity();
+                if (product.getQuantity()>0){
+                    customButtonListener.onMinusClick(product);
+                }
 
-              customButtonListener.onMinusClick(product);
             }
         });
-
-
     }
 
     private static final class NewHolder1{
@@ -122,6 +164,8 @@ public class CustomAdapter1 extends BaseAdapter {
         TextView no_of_item;
         BlurLayout blurLayout;
         TextView txt_name;
+        TextView stock_empty;
+        RelativeLayout relativeLayout;
 
         static NewHolder1 from(View view) {
 
@@ -133,11 +177,13 @@ public class CustomAdapter1 extends BaseAdapter {
                     ((TextView)view.findViewById(R.id.txt_rs)),
                     ((TextView)view.findViewById(R.id.number_of_item)),
                     ((BlurLayout)view.findViewById(R.id.blur_layout)),
-                    ((TextView)view.findViewById(R.id.home_name))
-            );
+                    ((TextView)view.findViewById(R.id.home_name)),
+                    ((TextView)view.findViewById(R.id.stock_empty)),
+                    ((RelativeLayout)view.findViewById(R.id.rl1))
+                    );
 
         }
-        private NewHolder1(ImageView imageView, ImageView minus, ImageView plus, TextView counter, TextView rupee, TextView no_of_item,BlurLayout blurLayout,TextView txt_name) {
+        private NewHolder1(ImageView imageView, ImageView minus, ImageView plus, TextView counter, TextView rupee, TextView no_of_item,BlurLayout blurLayout,TextView txt_name,TextView stock_empty,RelativeLayout relativeLayout) {
             this.imageView=imageView;
             this.minus=minus;
             this.plus=plus;
@@ -146,6 +192,8 @@ public class CustomAdapter1 extends BaseAdapter {
             this.no_of_item=no_of_item;
             this.blurLayout=blurLayout;
             this.txt_name=txt_name;
+            this.stock_empty=stock_empty;
+            this.relativeLayout=relativeLayout;
 
         }
     }

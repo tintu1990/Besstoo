@@ -13,17 +13,13 @@ public class BitmapLruCache extends LruCache<String, Bitmap> implements ImageLoa
         int maxMemory = (int) (Runtime.getRuntime().maxMemory() / 1024);
         return maxMemory / 8;
     }
-
     public BitmapLruCache() {
         super(getMaxCacheSize());
     }
-
     @Override
     protected int sizeOf(String key, Bitmap value) {
         return value.getRowBytes() * value.getHeight();
     }
-
-
     @Override
     public Bitmap getBitmap(String url) {
         return get(url);

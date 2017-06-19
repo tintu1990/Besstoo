@@ -1,39 +1,45 @@
 package com.rplanx.besstoo.adapter;
 
+import android.content.Context;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentPagerAdapter;
 
-import com.rplanx.besstoo.OneFragment;
-import com.rplanx.besstoo.TwoFragment;
+import com.rplanx.besstoo.Bakery;
+import com.rplanx.besstoo.Besstoo_Kitchen;
+import com.rplanx.besstoo.Party_plan;
 
 /**
  * Created by soumya on 24/2/17.
  */
 public class TabAdapter  extends FragmentPagerAdapter {
-    private String tabTitles[] = new String[]{"BESSTOO KITCHEN", "HOME MADE DELECACY"};
+    private String tabTitles[] = new String[]{"GRAB A MEAL","HOME MADE BAKERY"," PLAN YOUR PARTY"};
+    Context context;
 
-    public TabAdapter(FragmentManager fm) {
+    public TabAdapter(Context ctx,FragmentManager fm) {
         super(fm);
+        context=ctx;
     }
+    private Fragment f = null;
 
     @Override
     public Fragment getItem(int position) {
         switch (position) {
             case 0:
-                // Top Rated fragment activity
-                return  OneFragment.newInstance(position+1);
-
-
+                f = new Besstoo_Kitchen();
+                break;
             case 1:
+                f = new Bakery();
+                break;
+            case  2:
+                f = new Party_plan();
+                break;
 
-                return TwoFragment.newInstance(position+1);
-    /*               case 2:
-    return  ThirdFragment.newInstance(position+1);*/
 
-            // Games fragment activity
+
+
         }
-        return  null;
+        return  f;
     }
 
     @Override
@@ -45,6 +51,13 @@ public class TabAdapter  extends FragmentPagerAdapter {
 
     @Override
     public int getCount() {
-        return 2;
+        return 3;
     }
+
+    @Override
+    public int getItemPosition(Object object){
+       return POSITION_NONE;
+
+    }
+
 }

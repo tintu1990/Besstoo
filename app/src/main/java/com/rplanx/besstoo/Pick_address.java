@@ -42,8 +42,6 @@ public class Pick_address extends AppCompatActivity implements SimpleGestureList
         nav=(ImageView)findViewById(R.id.nav);
         nav.setOnClickListener(this);
     }
-
-
     @Override
     public void onSwipe(int direction) {
         String str = "";

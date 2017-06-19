@@ -13,9 +13,13 @@ public class Model2  implements Parcelable {
     private  String ruppee;
     private  String no_of_item;
     private  String description;
-    private  String name;
+  //  private  String name;
     private  String str_food_name;
+    String menu_id;
+    String from_kitchen;
     String id;
+    String date;
+    String forDay;
 
     public Model2(Parcel in) {
         string = in.readString();
@@ -24,15 +28,22 @@ public class Model2  implements Parcelable {
         no_of_item = in.readString();
         description = in.readString();
         id = in.readString();
+        from_kitchen=in.readString();
+        date=in.readString();
+        menu_id=in.readString();
+        forDay=in.readString();
     }
 
-    public  void  setNames(String name){
+   /* public  void  setNames(String name){
         this.name=name;
     }
 
     public  String getNames(){
         return  name;
-    }
+    }*/
+
+
+
 
     public static final Creator<Model2> CREATOR = new Creator<Model2>() {
         @Override
@@ -48,6 +59,36 @@ public class Model2  implements Parcelable {
 
     public Model2() {
 
+    }
+
+    public  void  setForDay(String forDay){
+        this.forDay=forDay;
+    }
+
+    public  String getForDay(){
+        return  forDay;
+    }
+
+    public  void setDate(String date){
+        this.date=date;
+    }
+    public  String getDate(){
+        return  date;
+    }
+
+    public  void  setMenu_id(String menu_id){
+        this.menu_id=menu_id;
+    }
+    public  String getMenu_id(){
+        return  menu_id;
+    }
+
+    public  void  setFrom_kitchen(String from_kitchen){
+        this.from_kitchen=from_kitchen;
+    }
+
+    public  String getFrom_kitchen(){
+        return from_kitchen;
     }
 
     public  void  setId(String id){
@@ -114,5 +155,6 @@ public class Model2  implements Parcelable {
         parcel.writeString(no_of_item);
         parcel.writeString(description);
         parcel.writeString(id);
+        parcel.writeString(forDay);
     }
 }

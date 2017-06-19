@@ -26,7 +26,7 @@ public class ModelCart {
 
     public int getCartSize() {
 
-        return cartProducts.size();
+        return  cartProducts.size();
 
     }
 

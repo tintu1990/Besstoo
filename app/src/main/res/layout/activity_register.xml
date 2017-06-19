@@ -36,10 +36,13 @@
                     android:layout_height="wrap_content"
                     android:layout_centerVertical="true"
                     android:layout_alignParentLeft="true"
+                    android:layout_alignParentStart="true"
                     android:src="@drawable/bck"
                     android:id="@+id/back"
                     android:layout_marginRight="5dp"
+                    android:layout_marginEnd="5dp"
                     android:layout_marginLeft="10dp"
+                    android:layout_marginStart="10dp"
                     />
             </RelativeLayout>
 
@@ -47,15 +50,14 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_toRightOf="@+id/back_layout"
-                android:text="PROFILE SETTING"
+                android:layout_toEndOf="@+id/back_layout"
+                android:text="SignUp"
                 android:layout_centerVertical="true"
                 android:textSize="15sp"
                 android:textColor="#ea9c0c"
                 android:layout_marginLeft="10dp"
+                android:layout_marginStart="10dp"
                 />
-
-
-
 
             <ImageView
                 android:layout_width="wrap_content"
@@ -63,6 +65,8 @@
                 android:src="@drawable/navs"
                 android:id="@+id/nav"
                 android:layout_alignParentRight="true"
+                android:visibility="gone"
+                android:layout_alignParentEnd="true"
                 android:layout_marginRight="10dp"
                 android:layout_marginLeft="10dp"
                 android:layout_centerVertical="true"
@@ -72,6 +76,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_toLeftOf="@+id/nav"
+                android:layout_toStartOf="@+id/nav"
                 android:src="@drawable/noti"
                 android:id="@+id/noti"
                 android:visibility="gone"
@@ -87,6 +92,7 @@
                 android:layout_height="wrap_content"
                 android:background="@drawable/not_no"
                 android:layout_toLeftOf="@+id/nav"
+                android:layout_toStartOf="@+id/nav"
                 android:textColor="#FFF"
                 android:textSize="15sp"
                 android:textStyle="bold" />
@@ -111,10 +117,11 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="PERSONAL DETAILS"
+                    android:text="@string/personal_details"
                     android:layout_marginTop="5dp"
                     android:layout_marginBottom="5dp"
                     android:paddingLeft="10dp"
+                    android:paddingStart="10dp"
                     android:id="@+id/personal"
                     android:textAppearance="?android:attr/textAppearanceMedium"
                     />
@@ -133,16 +140,17 @@
 
 
                 <EditText
-                    android:layout_width="wrap_content"
+                    android:layout_width="250dp"
                     android:layout_height="wrap_content"
                     android:layout_marginBottom="5dp"
                     android:background="@drawable/edittext_style"
                     android:layout_below="@+id/dash1"
                     android:singleLine="true"
                     android:inputType="text"
-                    android:hint=" Full Name"
+                    android:hint="@string/full_name"
                     android:id="@+id/edt_name"
                     android:paddingLeft="15dp"
+                    android:paddingStart="15dp"
                     />
 
                 <ImageView
@@ -162,15 +170,16 @@
                     android:id="@+id/imageView_dash2" />
 
                 <EditText
-                    android:layout_width="wrap_content"
+                    android:layout_width="250dp"
                     android:layout_height="wrap_content"
                     android:inputType="textEmailAddress"
                     android:layout_below="@+id/imageView_dash2"
                     android:background="@drawable/edittext_style"
-                    android:hint="Email"
+                    android:hint="@string/email_user"
                     android:singleLine="true"
                     android:id="@+id/edt_email"
                     android:paddingLeft="15dp"
+                    android:paddingStart="15dp"
                     />
 
                 <ImageView
@@ -192,15 +201,16 @@
 
 
                 <EditText
-                    android:layout_width="wrap_content"
+                    android:layout_width="250dp"
                     android:layout_height="wrap_content"
-                    android:hint="Password"
+                    android:hint="@string/password1"
                     android:id="@+id/edt_password"
                     android:singleLine="true"
                     android:inputType="textPassword"
                     android:background="@drawable/edittext_style"
                     android:layout_below="@+id/dash3"
                     android:paddingLeft="15dp"
+                    android:paddingStart="15dp"
                     />
 
                 <ImageView
@@ -223,15 +233,16 @@
                     />
 
                 <EditText
-                    android:layout_width="wrap_content"
+                    android:layout_width="250dp"
                     android:layout_height="wrap_content"
-                    android:hint="Phone Number"
+                    android:hint="@string/phone"
                     android:layout_below="@+id/dash4"
                     android:id="@+id/edt_phone"
-                    android:inputType="textPhonetic"
+                    android:inputType="phone"
                     android:singleLine="true"
                     android:background="@drawable/edittext_style"
                     android:paddingLeft="15dp"
+                    android:paddingStart="15dp"
                     />
 
                 <ImageView
@@ -290,12 +301,33 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_below="@+id/dash6"
-                    android:src="@drawable/save_btn"
+                    android:src="@drawable/besstoo_sign_up"
                     android:id="@+id/btn_save"
+                    android:layout_marginTop="25dp"
                     android:layout_centerHorizontal="true"
                     android:layout_marginBottom="15dp"
                     />
-                <TextView
+
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/btn_save"
+                    android:id="@+id/btn_log_in"
+                    android:visibility="gone"
+                    android:src="@drawable/besstoo_reg_login"
+                    android:layout_centerHorizontal="true"
+                    />
+
+
+
+               <!-- <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/btn_save"
+                    android:src="@drawable/cancel_shape"
+                    android:layout_centerHorizontal="true"
+                    />-->
+                <!--<TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="Besstoo Cash"
@@ -358,15 +390,16 @@
                     android:layout_centerHorizontal="true"
                     android:layout_marginTop="15dp"
                     android:layout_marginBottom="15dp"
-                    />
+                    />-->
 
 
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:paddingLeft="10dp"
-                    android:layout_below="@+id/refer"
+                    android:layout_below="@+id/btn_save"
                     android:text="Notification"
+                    android:visibility="invisible"
                     android:id="@+id/notifi"
                     android:layout_marginBottom="5dp"
                     android:textAppearance="?android:attr/textAppearanceMedium"
@@ -376,30 +409,34 @@
                     android:layout_height="wrap_content"
                     android:paddingLeft="15dp"
                     android:id="@+id/enable_noti"
+                    android:visibility="invisible"
                     android:text="Enable Notification"
                     android:layout_below="@+id/notifi"
                     android:layout_marginBottom="20dp"
                     />
 
-                <ImageView
+              <!--  <ImageView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:src="@drawable/logout_btn"
                     android:id="@+id/log_out"
-                    android:layout_marginRight="4dp"
                     android:layout_below="@+id/enable_noti"
-                    android:layout_toRightOf="@+id/cash"
-                    android:layout_toEndOf="@+id/cash" />
+                    android:layout_toRightOf="@+id/notifi"
+                    android:layout_toEndOf="@+id/notifi"
+                    android:layout_marginTop="44dp" />-->
+                   <!-- android:layout_toRightOf="@+id/cash"
+                    android:layout_toEndOf="@+id/cash"-->
 
 
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_toRightOf="@+id/log_out"
                     android:text="LOGOUT"
-                    android:layout_marginLeft="4dp"
-                    android:layout_alignBottom="@+id/log_out"
-                    />
+                    android:id="@+id/tx_log_out"
+                    android:visibility="invisible"
+                    android:layout_below="@+id/enable_noti"
+                    android:layout_toRightOf="@+id/enable_noti"
+                    android:layout_toEndOf="@+id/enable_noti" />
 
 
             </RelativeLayout>

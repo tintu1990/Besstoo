@@ -5,4 +5,39 @@
     <string-array name="location">
         <item>New+Town</item>
     </string-array>
+    <string name="Rs">\u20B9</string>
+    <string name="quantity">Quantity</string>
+
+    <string name="address">webel it park kolkata</string>
+    <string name="login">Login/Signup</string>
+    <string name="email">email/mobile</string>
+    <string name="password">password</string>
+    <string name="my_order">My Order</string>
+    <string name="offer">Offers</string>
+    <string name="review_order">Review Order</string>
+    <string name="cart_item">Item in your cart</string>
+    <string name="delivery_details">Delivery Details</string>
+    <string name="date">Date:</string>
+    <string name="cal_date">11-4-2017</string>
+    <string name="time">Time:</string>
+    <string name="time_range">7.00 pm -7.45 pm</string>
+    <string name="address_name">Address:</string>
+    <string name="locality">Locality:</string>
+    <string name="price_details">Price Details</string>
+    <string name="sub_total">Sub Total:</string>
+    <string name="delivery_cost">Delivery Cost:</string>
+    <string name="discounts">Discounts:</string>
+    <string name="vat">Vat:</string>
+    <string name="totalCost">Total Cost</string>
+    <string name="payment_method">Payment Method</string>
+    <string name="add_address">Add address</string>
+    <string name="address_line1">Address line1</string>
+    <string name="address_line2">Address line2</string>
+    <string name="address_line3">Address line3</string>
+    <string name="profile_setting">PROFILE SETTING</string>
+    <string name="personal_details">PERSONAL DETAILS</string>
+    <string name="full_name">Full Name</string>
+    <string name="email_user">Email</string>
+    <string name="password1">Password</string>
+    <string name="phone">Phone Number</string>
 </resources>

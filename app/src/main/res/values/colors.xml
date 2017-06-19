@@ -4,4 +4,8 @@
     <color name="colorPrimaryDark">#303F9F</color>
     <color name="colorAccent">#ea9c0c</color>
     <color name="coloritem">#FFFFFF</color>
+    <color name="indigo">#FFFFFF</color>
+    <color name="red">#FF0000</color>
+    <color name="gray">#708090</color>
+    <color name="drop">#2d343a</color>
 </resources>

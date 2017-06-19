@@ -9,7 +9,6 @@ import android.widget.TextView;
 
 import com.rplanx.besstoo.R;
 import com.rplanx.besstoo.getset.Model2;
-import com.rplanx.besstoo.getset.ModelCart;
 
 import java.util.ArrayList;
 
@@ -23,7 +22,6 @@ public class CartAdapter extends ArrayAdapter<Model2> {
     Model2 model2;
     Context context;
     NewViewHolder newViewHolder;
-    ModelCart modelCart;
     String string;
 
     public CartAdapter(Context context, int resource, ArrayList<Model2> modelCarts) {
@@ -51,14 +49,15 @@ public class CartAdapter extends ArrayAdapter<Model2> {
             newViewHolder = (NewViewHolder) view.getTag();
         }
        if (model2.getQuantity()>0) {
-           newViewHolder.txt_quantity.setVisibility(View.VISIBLE);
-           newViewHolder.amt.setVisibility(View.VISIBLE);
-           newViewHolder.title.setVisibility(View.VISIBLE);
+            newViewHolder.txt_quantity.setVisibility(View.VISIBLE);
+            newViewHolder.amt.setVisibility(View.VISIBLE);
+            newViewHolder.title.setVisibility(View.VISIBLE);
             string=model2.getStr_food_name();
-          //  string =string.replace("\\\n", System.getProperty("line.separator"));
             newViewHolder.title.setText(string);
             newViewHolder.txt_quantity.setText(String.valueOf(model2.getQuantity()));
-           int r=Integer.parseInt(model2.getRuppee());
+            String inp_str=model2.getRuppee();
+            inp_str=inp_str.replaceAll("[^\\d.]", "");
+           int r=Integer.parseInt(inp_str);
            newViewHolder.amt.setText(String.valueOf(model2.getQuantity()*r));
       }
        else {
@@ -68,8 +67,6 @@ public class CartAdapter extends ArrayAdapter<Model2> {
         }
         return view;
     }
-
-
     class NewViewHolder {
         TextView txt_quantity;
         TextView title;

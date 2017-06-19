@@ -1,5 +1,4 @@
 <resources>
-
     <!-- Base application theme. -->
     <style name="AppTheme" parent="Base.Theme.AppCompat.Light.DarkActionBar">
         <!-- Customize your theme here. -->
@@ -18,5 +17,35 @@
         <item name="android:backgroundDimEnabled">true</item>
         <item name="android:background">@android:color/transparent</item>
     </style>
+    <style name="MyRadioButton" parent="Theme.AppCompat.Light">
+        <item name="colorControlNormal">@color/indigo</item>
+        <item name="colorControlActivated">@color/red</item>
+    </style>
+
+    <style name="MyAlertDialogStyle" parent="Theme.AppCompat.Light.Dialog.Alert">
+        <!-- Used for the buttons -->
+        <item name="colorAccent">#FF0000</item>
+        <!-- Used for the title and text -->
+        <item name="android:textColorPrimary">#FF0000</item>
+        <item name="windowFixedWidthMajor">70%</item>
+        <item name="windowFixedWidthMinor">70%</item>
+        <item name="android:textSize">25sp</item>
+        <!-- Used for the background -->
+        <item name="android:background">@drawable/popup_back</item>
+    </style>
+
+    <style name="Autocomplete" parent="Widget.AppCompat.Light.AutoCompleteTextView">
+        <item name="android:background">@color/colorAccent</item>
+
+    </style>
+    <style name="AppTheme.PopupOverlay" parent="ThemeOverlay.AppCompat.Light">
+        <item name="android:padding">8dp</item>
+    </style>
+
+
+    <!-- <style name="DialogAnimation_2">
+        <item name="android:windowEnterAnimation">@anim/slide_up</item>
+        <item name="android:windowExitAnimation">@anim/slide_bottom</item>
+    </style>-->
 
 </resources>
